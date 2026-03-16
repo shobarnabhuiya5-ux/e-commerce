@@ -1,29 +1,54 @@
 import React from 'react'
-import "slick-carousel/slick/slick.css";
+
 import { Link } from 'react-router';
 import Slider from 'react-slick'
+
 
 const Banner = () => {
    const settings = {
         dots: true,
-        infinite: true,
-        speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 1,
-      };
+        arrows: false,
+        appendDots: dots => (
+            <div>
+              <ul className='flex gap-2 absolute bottom-6 left-1/2 -translate-x-1/2'> {dots} </ul>
+            </div>
+          ),
+          customPaging: i => (
+           <button className= 'w-1 md:w-3 h-1 md:h-3 rounded-full bg-white'></button>
+          )
+   };
   return (
-    <section>
-      <div className='container'>
-        <div>
+    <section className='pt-3 pb-12'>
+      <div className='container flex gap-4 md:gap-7'>
+        <div className='w-[66%]'>
         <Slider {...settings}>
-            <Link>
-            <img src="/banner.png" alt="banner" />
+           <Link to="/">
+            <img src="/banner.png" alt="banner" className='w-full'/>
+          </Link>
+          <Link to="/">
+            <img src="/banner.png" alt="banner" className='w-full'/>
+          </Link>
+          <Link to="/">
+            <img src="/banner.png" alt="banner" className='w-full'/>
+          </Link>
+          <Link to="/">
+            <img src="/banner.png" alt="banner" className='w-full'/>
+         </Link>
+            
+         </Slider>
+        </div>
+        <div className='w-[34%] flex flex-col space-y-4 md:space-y-7'>
+            <Link to='/'>
+            <img src="/banner_1.png" alt="banner_1" className='w-full'/>
 
             </Link>
-      
-       </Slider>
+            <Link to='/'>
+            <img src="/banner_2.png" alt="banner_2" className='w-full' />
+            </Link>
         </div>
       </div>
+      
     </section>
   )
 }
