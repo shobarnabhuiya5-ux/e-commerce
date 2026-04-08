@@ -84,7 +84,7 @@ const Category = () => {
                 {
                     categories.map((item) => (
                         <Link key={item.title} to ="/" className='p-4 shadow flex items-center  rounded-xl'>
-                            <item.icon className='text-xl'/>
+                            <item.icon className='text-xl text-brand'/>
                             <p className='pl-2.5 pr-6 font-normal text-base text-secondary'>{item.title}</p>
                             <MdArrowForwardIos  className='text-[##999999] ml-auto'/>
                        </Link>

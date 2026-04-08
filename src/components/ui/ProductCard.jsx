@@ -5,15 +5,14 @@ import { IoStarSharp } from 'react-icons/io5'
 
 const ProductCard = ({img, discount, price, head}) => {
   return (
-    <div className='p-2.5 border border-[#E9E9E9] rounded-2xl'>
+    <div className='p-2.5 border border-[#E9E9E9] rounded-2xl bg-white'>
         <div className='rounded-2xl overflow-hidden relative'>
-            <img src={img} alt="card"className='w-full'/>
+            <img src={img} alt="card"className='w-full bg-gray-100'/>
             {discount && (<p className='py-1 px-3 bg-badge absolute top-0 left-0 rounded text-white'>{discount}</p>)}
             <span className='absolute top-5 right-3.5 text-3xl text-gray-400 cursor-pointer'><FaRegHeart/>
             </span>
         </div>
-      
-      <div className='pt-3.5 px-1'>
+       <div className='pt-3.5 px-1'>
           <div className='flex items-center gap-1 text-amber-300'>
              <IoStarSharp/>
              <IoStarSharp/>
