@@ -2,8 +2,10 @@ import React from 'react'
 import { BsCart4 } from 'react-icons/bs'
 import { FaRegHeart } from 'react-icons/fa'
 import { IoStarSharp } from 'react-icons/io5'
+import { useGetProductsQuery } from '../../services/api'
 
 const ProductCard = ({img, discount, price, head}) => {
+   const {data} = useGetProductsQuery();
   return (
     <div className='p-2.5 border border-[#E9E9E9] rounded-2xl bg-white'>
         <div className='rounded-2xl overflow-hidden relative'>

@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Selectinput from '../components/ui/Selectinput'
 import ProductCard from '../components/ui/ProductCard'
 import { Link } from 'react-router'
 import Footer from '../components/Layout/Footer'
+import { MdDownloading } from 'react-icons/md'
+import { useGetProductsQuery } from '../services/api'
 
 const Shop = () => {
+    const {data, isLoading, isError} = useGetProductsQuery();
     const sortOptions = [
         {
             value:"newest_items",
@@ -31,7 +34,7 @@ const Shop = () => {
         {
             title:"Men's T-Shirts",
         }
-    ]
+    ];
   return (
     <main className='py-12'>
       <div className='container grid grid-cols-12 gap-14'>
@@ -60,20 +63,33 @@ const Shop = () => {
                     </div>
                  </div>
             </div>
-            <div className='grid grid-cols-3 gap-6 mt-6'>
-                <ProductCard img='card.png' head='Headrest Executive Mesh Office Chair set' discount='-25% OFF' price='৳10500'/>
-                <ProductCard img='card(1).png' head='Women fashion dress set' discount='-25% OFF' price='৳1000'/>
-                <ProductCard img='card (2).png' head='Headrest Executive Mesh Office Chair set' discount='-25% OFF' price='৳5000'/>
-                <ProductCard img='card(3).png' head='Women black dress and red hat collections' discount='-25% OFF' price='৳1000.00'/>
-                <ProductCard img='card.png' head='Headrest Executive Mesh Office Chair set' discount='-25% OFF' price='৳10500'/>
-                <ProductCard img='card(1).png' head='Women fashion dress set' discount='-25% OFF' price='৳1000'/>
-                <ProductCard img='card (2).png' head='Headrest Executive Mesh Office Chair set' discount='-25% OFF' price='৳5000'/>
-                <ProductCard img='card(3).png' head='Women black dress and red hat collections' discount='-25% OFF' price='৳1000.00'/>
-                <ProductCard img='card.png' head='Headrest Executive Mesh Office Chair set' discount='-25% OFF' price='৳10500'/>
-                <ProductCard img='card(1).png' head='Women fashion dress set' discount='-25% OFF' price='৳1000'/>
-                <ProductCard img='card (2).png' head='Headrest Executive Mesh Office Chair set' discount='-25% OFF' price='৳5000'/>
-                <ProductCard img='card(3).png' head='Women black dress and red hat collections' discount='-25% OFF' price='৳1000.00'/>
-            </div>
+            <Link to="/" className="pt-5 grid grid-cols-3 gap-6 min-h-screen">
+              {isLoading ? (
+                <div className="col-span-3 flex justify-center items-center">
+      
+                  <div className="flex flex-col gap-4 items-center justify-center">
+        
+                    <div className="w-20 h-20 border-4 border-transparent border-t-brand rounded-full animate-spin flex items-center justify-center">
+          
+                      <div className="w-14 h-14 border-4 border-transparent border-t-red-400 rounded-full animate-spin"></div>
+        
+                    </div>
+
+                    <p className="text-secondary text-xl">Loading products...</p>
+
+                  </div>
+
+                </div>
+              ) : error ? (
+                 <div className="col-span-3 flex justify-center items-center">
+                   <Error/>
+                 </div>
+               ) : (
+                data?.products?.map((item) => (
+                  <ProductCard key={item.id} head={item.title} img={item.thumbnail} price={item.price} />
+                ))
+              )}
+            </Link>
         </div>
         
       </div>

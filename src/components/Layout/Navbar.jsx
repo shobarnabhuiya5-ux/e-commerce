@@ -32,7 +32,7 @@ const Navbar = () => {
                     <Link to="/login" className='flex gap-1.5 items-center text-base font-normal text-primary'><FaRegUser className='text-xl'/><span className='hidden md:inline-block'>Login</span></Link>
                     <Link to="/login" className='flex gap-1.5 items-center text-base font-normal text-primary'><GoHeart className='text-xl'/><span className='hidden md:inline-block'>Wishlist</span></Link>
 
-                    <Link to="/login" className='flex gap-1.5 items-center text-base font-normal text-primary'><BsCart4 className='text-xl'/><span className='hidden md:inline-block'>My cart</span> <span className='w-5 h-5 rounded-full text-white flex items-center justify-center bg-red-500 text-sm'>1</span></Link>
+                    <Link to="/shop" className='flex gap-1.5 items-center text-base font-normal text-primary'><BsCart4 className='text-xl'/><span className='hidden md:inline-block'>My cart</span> <span className='w-5 h-5 rounded-full text-white flex items-center justify-center bg-red-500 text-sm'>1</span></Link>
                 </div>
                 
             </div>
