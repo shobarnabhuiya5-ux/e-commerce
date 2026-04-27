@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import Selectinput from '../components/ui/Selectinput'
 import ProductCard from '../components/ui/ProductCard'
-import { Link } from 'react-router'
+import { Link, useSearchParams } from 'react-router'
 import Footer from '../components/Layout/Footer'
 import { MdDownloading } from 'react-icons/md'
 import { useGetProductsQuery } from '../services/api'
 
 const Shop = () => {
-    const {data, isLoading, isError} = useGetProductsQuery();
+  const [searchparams] = useSearchParams();
+  const category = searchparams.get("category");
+    const {data, isLoading, isError} = useGetProductsQuery({
+      limit,
+      skip:limit* (pageNum - 1),
+      category,
+    });
     const sortOptions = [
         {
             value:"newest_items",

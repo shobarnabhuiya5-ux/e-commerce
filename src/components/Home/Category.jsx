@@ -9,73 +9,10 @@ import { PiHandbagSimpleBold, PiHandbagSimpleFill, PiShirtFolded } from 'react-i
 import { RiJewelryFill } from 'react-icons/ri'
 import { TbShoppingBag } from 'react-icons/tb'
 import { Link } from 'react-router'
+import { useGetCategoryListQuery } from '../../services/api'
 
 const Category = () => {
-    const categories = [
-        {
-            title: "Health & Household",
-            icon: MdHealthAndSafety
-
-        },
-        {
-            title: "Kids Fashion",
-            icon: FaShirt
-        },
-        {
-            title: "Toys",
-            icon: MdToys
-        },
-        {
-            title: "Groceries",
-            icon: MdLocalGroceryStore
-        },
-        {
-            title: "Home & Lifestyle",
-            icon: FaHome
-        },
-        {
-            title: "Men Fashion",
-            icon: PiShirtFolded
-        },
-        {
-            title: "Women’s Fashion",
-            icon: GiAmpleDress
-        },
-        {
-            title: "Stationary & Books",
-            icon: GiNotebook
-        },
-        {
-            title:"Leather Goods",
-            icon: PiHandbagSimpleFill
-        },
-        {
-            title:"Jewelleries ",
-            icon: RiJewelryFill
-        },
-        {
-            title:"Watches",
-            icon: BsWatch
-        },
-        {
-            title:"Men Fashion",
-            icon: GiDiamondRing 
-
-        },
-        {
-            title:"Tools & Hardware",
-            icon: FaTools
-        },
-        {
-            title:"Pet Supplies",
-            icon: TbShoppingBag
-        },
-        {
-            title:"Seasonal",
-            icon: LuNotebook
-        }
-        
-    ]
+    const {data} = useGetCategoryListQuery();
   return (
     <section className='py-12'>
         <div className="container">
@@ -83,7 +20,7 @@ const Category = () => {
             <div className='mt-8 grid grid-cols-5 gap-3.5'>
                 {
                     categories.map((item) => (
-                        <Link key={item.title} to ="/" className='p-4 shadow flex items-center  rounded-xl'>
+                        <Link key={item.title} to ={`/shop?category${item}`} className='p-4 shadow flex items-center  rounded-xl'>
                             <item.icon className='text-xl text-brand'/>
                             <p className='pl-2.5 pr-6 font-normal text-base text-secondary'>{item.title}</p>
                             <MdArrowForwardIos  className='text-[##999999] ml-auto'/>

@@ -3,17 +3,18 @@ import { BsCart4 } from 'react-icons/bs'
 import { FaRegHeart } from 'react-icons/fa'
 import { IoStarSharp } from 'react-icons/io5'
 import { useGetProductsQuery } from '../../services/api'
+import { Link } from 'react-router'
 
 const ProductCard = ({img, discount, price, head}) => {
    const {data} = useGetProductsQuery();
   return (
     <div className='p-2.5 border border-[#E9E9E9] rounded-2xl bg-white'>
-        <div className='rounded-2xl overflow-hidden relative'>
+        <Link to={`/shop/${data.id}`} className='rounded-2xl overflow-hidden relative'>
             <img src={img} alt="card"className='w-full bg-gray-100'/>
             {discount && (<p className='py-1 px-3 bg-badge absolute top-0 left-0 rounded text-white'>{discount}</p>)}
             <span className='absolute top-5 right-3.5 text-3xl text-gray-400 cursor-pointer'><FaRegHeart/>
             </span>
-        </div>
+        </Link>
        <div className='pt-3.5 px-1'>
           <div className='flex items-center gap-1 text-amber-300'>
              <IoStarSharp/>

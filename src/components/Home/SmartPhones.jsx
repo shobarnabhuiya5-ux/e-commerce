@@ -2,21 +2,22 @@ import React from 'react'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import { Link } from 'react-router'
 import ProductCard from '../ui/ProductCard'
-import { IoIosArrowDown } from 'react-icons/io'
-import Button from '../ui/Button'
 import { useGetProductsQuery } from '../../services/api'
+import Category from './category'
 
-const FeaturedProducts = () => {
-     const {data, isLoading, isError} = useGetProductsQuery({
-         limit:4,
-         skip:0,
-});
+
+const SmartPhones = () => {
+    const {data, isLoading, isError} = useGetProductsQuery({
+     limit:4,
+     skip:0,
+     Category:"Smartphones"
+    });
   return (
-    <section className='pb=12'>
+    <section className='pb-12'>
         <div className="container">
             <div className='flex justify-between'>
-                <h3 className='sub_head'>Featured Product</h3>
-                <Link to ="/shop" className='text-base font-normal text-secondary flex items-center gap-4'>View more <FaArrowRightLong/></Link>
+                <h3 className='sub_head'>Smart Phones</h3>
+                <Link to ="/shop?category=smartphones" className='text-base font-normal text-secondary flex items-center gap-4'>View more <FaArrowRightLong/></Link>
             </div>
             <div className='grid grid-cols-4 mt-4 gap-5'>
                 {
@@ -28,15 +29,11 @@ const FeaturedProducts = () => {
                 }
                 
             </div>
-            <div className='flex items-center justify-center'>
-            <Button className='flex items-center justify-center mt-16 gap-1'>Show more <IoIosArrowDown /></Button>
-            
-
-            </div>
            
         </div>
-      </section>
+      
+    </section>
   )
 }
 
-export default FeaturedProducts
+export default SmartPhones 
